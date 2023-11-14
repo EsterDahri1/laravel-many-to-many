@@ -60,6 +60,18 @@
                 </div>
 
                 <div class="mb-5">
+                    <label for="technologies" class="form-label">City</label>
+                    <select multiple class="form-select form-select-lg" name="technologies[]" id="technologies">
+                        <option selected>Select one</option>
+                        @foreach ($technologies as $technology)
+                            <option value="{{ $technology->id }}"
+                                {{ in_array($technology->id, old('technologies', [])) ? 'selected' : '' }}>
+                                {{ $technology->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="mb-5">
                     <label for="description" class="form-label">Description</label>
                     <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="description"
                         cols="30" rows="5" placeholder="Type a description">{{ old('description') }}</textarea>
