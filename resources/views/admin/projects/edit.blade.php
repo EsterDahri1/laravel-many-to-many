@@ -92,6 +92,9 @@
                         @endforeach
                     </select>
                 </div>
+                @error('technologies')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
 
                 <div class="mb-5">
                     <label for="description" class="form-label">Description</label>
