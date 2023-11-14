@@ -29,7 +29,8 @@ class UpdateProjectRequest extends FormRequest
             'cover_image' => ['bail', 'required', 'image', 'max:1000'],
             'link' => ['bail', 'nullable', 'string', 'max:255', Rule::unique('projects')],
             'github' => ['bail', 'nullable', 'string', 'max:255', Rule::unique('projects')],
-            'type_id' => ['nullable', 'exists:types,id']
+            'type_id' => ['nullable', 'exists:types,id'],
+            'technologies' => ['nullable', 'exists:technologies,id']
         ];
     }
 }

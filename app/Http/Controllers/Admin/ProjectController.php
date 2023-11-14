@@ -50,7 +50,8 @@ class ProjectController extends Controller
             $val_data['cover_image'] = $file_path;
         }
 
-        Project::create($val_data);
+        $project = Project::create($val_data);
+        $project->technologies()->attach($request->technologies);
         return to_route('admin.projects.index')->with('message', 'Project created successfully');
     }
 
