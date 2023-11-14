@@ -51,7 +51,7 @@ class ProjectController extends Controller
         }
 
         $project = Project::create($val_data);
-        $project->technologies()->attach($request->technologies);
+        $project->technology()->attach($request->technologies);
         return to_route('admin.projects.index')->with('message', 'Project created successfully');
     }
 
@@ -106,7 +106,7 @@ class ProjectController extends Controller
             Storage::delete($project->cover_image);
         }
 
-        $project->technologies()->detach();
+        $project->technology()->detach();
 
         $project->delete();
 
