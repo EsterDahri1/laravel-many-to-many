@@ -72,29 +72,20 @@
                     @enderror
                 </div>
 
-                <div class="mb-5">
-                    <label for="technologies" class="form-label">Technologies</label>
-                    <select multiple class="form-select form-select-lg" name="technologies[]" id="technologies">
-                        <option selected>Select one</option>
-
-                        @foreach ($technologies as $technology)
-                            @if ($errors->any())
-                                <option value="{{ $technology->id }}"
-                                    {{ in_array($technology->id, old('technologies', [])) ? 'selected' : '' }}>
-                                    {{ $technology->name }}
-                                </option>
-                            @else
-                                <option value="{{ $technology->id }}"
-                                    {{ $project->technologies->contains($technology) ? 'selected' : '' }}>
-                                    {{ $technology->name }}
-                                </option>
-                            @endif
-                        @endforeach
-                    </select>
+                <div class="mb-5 technologies d-flex flex-column overflow-y-auto border rounded-2 p-2"
+                    style="max-height: 140px;">
+                    @forelse ($technologies as $technology)
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="technology-{{ $technology->id }}"
+                                value="{{ $technology->id }}">
+                            <label class="form-check-label"
+                                for="technology-{{ $technology->id }}">{{ $technology->name }}</label>
+                        </div>
+                    @empty
+                        <p>No technologies applied</p>
+                    @endforelse
                 </div>
-                @error('technologies')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
+
 
                 <div class="mb-5">
                     <label for="description" class="form-label">Description</label>
