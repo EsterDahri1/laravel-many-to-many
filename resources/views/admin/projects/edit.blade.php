@@ -25,11 +25,10 @@
                 @csrf
                 @method('PUT')
 
-                <div class="mb-5">
+                <div>
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" name="title" id="title"
-                        class="form-control @error('title') is-invalid @enderror" placeholder="" aria-describedby="helpId"
-                        value=" {{ old('title', $project->title) }}" required>
+                    <input type="text" name="title" id="title" class="form-control" placeholder=""
+                        aria-describedby="helpId" value=" {{ old('title', $project->title) }}" required>
                     <small id="titleHelper" class="text-muted">Type a title of Project</small>
                     @error('title')
                         <div class="text-danger"> {{ $message }} </div>
@@ -109,11 +108,12 @@
                         <span class="input-group-text" id="github">https://</span>
                         <input type="text" name="github" class="form-control" id="github" aria-describedby=""
                             basic-addon4" value="{{ old('github') }}">
-                        @error('github')
+                        {{-- @error('github')
                             <div class="text-danger"> {{ $message }} </div>
-                        @enderror
+                        @enderror --}}
                     </div>
-                    <div class="form-text" id="basic-addon4">Insert your github link.</div>
+                    <div class="form-text" id="basic-addon4">Insert your github link.
+                    </div>
                 </div>
 
                 <div class="mb-5">
@@ -127,10 +127,7 @@
                     <div class="input-group">
                         <span class="input-group-text" id="link">https://</span>
                         <input type="text" name="link" class="form-control" id="link" aria-describedby=""
-                            basic-addon4" value="{{ old('link') }}">
-                        @error('link')
-                            <div class="text-danger"> {{ $message }} </div>
-                        @enderror
+                            basic-addon4" value="">
                     </div>
                     <div class="form-text" id="basic-addon4">Insert Link.</div>
                 </div>
